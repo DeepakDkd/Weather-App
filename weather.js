@@ -1,3 +1,13 @@
+let btn = document.querySelector('button');
+let input = document.querySelector('input');
+let city = document.querySelector('#city')
+let temp_c = document.querySelector('#temp_c')
+let cloud = document.querySelector('#cloud')
+let humidity = document.querySelector('#humidity')
+let wind_kph = document.querySelector('#wind-kph')
+let wind_mph = document.querySelector('#wind-mph')
+let last_update = document.querySelector('#last_update')
+let localtime = document.querySelector('#localtime')
 
 let weatherapi = async (city) => {
 
@@ -30,16 +40,6 @@ let getdata = async (city) => {
 }
 
 
-let btn = document.querySelector('button');
-let input = document.querySelector('input');
-let city = document.querySelector('#city')
-let temp_c = document.querySelector('#temp_c')
-let cloud = document.querySelector('#cloud')
-let humidity = document.querySelector('#humidity')
-let wind_kph = document.querySelector('#wind-kph')
-let wind_mph = document.querySelector('#wind-mph')
-let last_update = document.querySelector('#last_update')
-let localtime = document.querySelector('#localtime')
 
 
 btn.addEventListener('click', async () => {
