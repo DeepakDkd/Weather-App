@@ -70,11 +70,12 @@ async function autocall() {
 
 
     let past = localStorage.getItem('city');
-    if (!past) {
-        var data = await getdata('delhi')
+    if (past) {
+        
+        var data = await getdata(past)    
     }
     else {
-        var data = await getdata(past)
+        var data = await getdata('delhi')
     }
     city.textContent = `${data[0].city}, ${data[0].region}, ${data[0].country}`;
     temp_c.innerHTML = `${data[0].temp_c}` + '<sup>o</sup>C';
