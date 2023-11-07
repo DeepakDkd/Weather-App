@@ -5,7 +5,7 @@ let weatherapi = async (city) => {
     let apidata = await api.json()
     let arr = [];
     arr.push(apidata)
-    
+
     if (api.ok) {
         return arr;
     }
@@ -14,16 +14,16 @@ let weatherapi = async (city) => {
 let getdata = async (city) => {
 
     let data = await weatherapi(city);
-    if(data){
-    let details = [{
-        city: data[0].location.name, region: data[0].location.region, country: data[0].location.country,
-        localtime: data[0].location.localtime, last_updated: data[0].current.last_updated, temp_c: data[0].current.temp_c,
-        wind_mph: data[0].current.wind_mph, wind_kph: data[0].current.wind_kph, humidity: data[0].current.humidity,
-        cloud: data[0].current.cloud
-    }];
+    if (data) {
+        let details = [{
+            city: data[0].location.name, region: data[0].location.region, country: data[0].location.country,
+            localtime: data[0].location.localtime, last_updated: data[0].current.last_updated, temp_c: data[0].current.temp_c,
+            wind_mph: data[0].current.wind_mph, wind_kph: data[0].current.wind_kph, humidity: data[0].current.humidity,
+            cloud: data[0].current.cloud
+        }];
 
-    return details;
-}
+        return details;
+    }
 
     return null;
 
@@ -45,25 +45,25 @@ let localtime = document.querySelector('#localtime')
 btn.addEventListener('click', async () => {
     let value = input.value;
     let data = await getdata(value)
-    if(data){
-    localStorage.setItem('city', value)
+    if (data) {
+        localStorage.setItem('city', value)
 
-    input.value = ''
-    
-    city.textContent = `${data[0].city}, ${data[0].region}, ${data[0].country}`;
-    temp_c.innerHTML = `${data[0].temp_c}` + '<sup>o</sup>C';
-    cloud.textContent = ` cloud : ${data[0].cloud}`;
-    humidity.textContent = `Humidity : ${data[0].humidity}%  `;
-    wind_kph.textContent = `wind-kph: ${data[0].wind_kph}`;
-    wind_mph.textContent = `Wind Speed : ${data[0].wind_mph} mph`;
-    last_update.textContent = `Last Update : ${data[0].last_updated}`;
-    localtime.textContent = `Local Time : ${data[0].localtime}`;
-}
-else{
-    
-alert("enter valid city name")
+        input.value = ''
 
-}
+        city.textContent = `${data[0].city}, ${data[0].region}, ${data[0].country}`;
+        temp_c.innerHTML = `${data[0].temp_c}` + '<sup>o</sup>C';
+        cloud.textContent = ` cloud : ${data[0].cloud}`;
+        humidity.textContent = `Humidity : ${data[0].humidity}%  `;
+        wind_kph.textContent = `wind-kph: ${data[0].wind_kph}`;
+        wind_mph.textContent = `Wind Speed : ${data[0].wind_mph} mph`;
+        last_update.textContent = `Last Update : ${data[0].last_updated}`;
+        localtime.textContent = `Local Time : ${data[0].localtime}`;
+    }
+    else {
+
+        alert("enter valid city name")
+
+    }
 })
 
 async function autocall() {
